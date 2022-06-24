@@ -1,4 +1,4 @@
-package kataryna.app.workmanager.ui.main
+package kataryna.app.workmanager.ui.tasks
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import kataryna.app.workmanager.R
 
-class MainFragment : Fragment() {
+class TasksFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = TasksFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: TasksViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +25,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        viewModel = ViewModelProvider(this)[TasksViewModel::class.java]
     }
 
 }
