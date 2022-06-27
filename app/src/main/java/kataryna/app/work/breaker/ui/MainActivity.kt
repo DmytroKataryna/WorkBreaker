@@ -1,8 +1,8 @@
 package kataryna.app.work.breaker.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kataryna.app.breaker.R
+import androidx.appcompat.app.AppCompatActivity
+import kataryna.app.work.breaker.R
 
 class MainActivity : AppCompatActivity() {
 

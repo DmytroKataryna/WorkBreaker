@@ -8,7 +8,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import kataryna.app.breaker.R
+import kataryna.app.work.breaker.R
 
 class TasksFragment : Fragment(R.layout.fragment_tasks) {
 
