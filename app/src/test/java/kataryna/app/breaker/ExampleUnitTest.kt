@@ -1,4 +1,4 @@
-package kataryna.app.workmanager
+package kataryna.app.breaker
 
 import org.junit.Test
 

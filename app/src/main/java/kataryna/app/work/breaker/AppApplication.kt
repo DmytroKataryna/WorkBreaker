@@ -1,4 +1,4 @@
-package kataryna.app.workmanager
+package kataryna.app.work.breaker
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

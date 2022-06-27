@@ -1,4 +1,4 @@
-package kataryna.app.workmanager
+package kataryna.app.breaker
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("kataryna.app.workmanager", appContext.packageName)
+        assertEquals("kataryna.app.work.breaker", appContext.packageName)
     }
 }

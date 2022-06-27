@@ -1,9 +1,8 @@
-package kataryna.app.workmanager.ui
+package kataryna.app.work.breaker.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kataryna.app.workmanager.R
-import kataryna.app.workmanager.ui.tasks.TasksFragment
+import kataryna.app.breaker.R
 
 class MainActivity : AppCompatActivity() {
 

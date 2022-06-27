@@ -1,4 +1,4 @@
-package kataryna.app.workmanager.ui.tasks
+package kataryna.app.work.breaker.ui.tasks
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import kataryna.app.workmanager.R
+import kataryna.app.breaker.R
 
 class TasksFragment : Fragment(R.layout.fragment_tasks) {
 
