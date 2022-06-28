@@ -4,4 +4,5 @@
     <string name="dialog_permission_title">Background location tracking is necessary functionality for this application. Without it geofencing would not work. Please update permission in settings for proper use.</string>
     <string name="dialog_permission_pos_btn">Location settings</string>
     <string name="dialog_permission_neg_btn">Return</string>
+    <string name="tasks_hint_text">Enter your task to be informed.</string>
 </resources>

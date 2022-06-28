@@ -1,4 +1,4 @@
-package kataryna.app.work.breaker.ui.map
+package kataryna.app.work.breaker.presentation.map
 
 import android.Manifest
 import android.content.Context
