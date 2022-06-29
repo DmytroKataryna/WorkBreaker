@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.map
 import java.util.concurrent.TimeUnit
 
 
-val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class LocalPhotoStorage(val context: Context, private val systemTimeRetriever: TimeRetriever) {
 
@@ -62,8 +62,8 @@ class LocalPhotoStorage(val context: Context, private val systemTimeRetriever: T
     }
 
     companion object {
-        const val PHOTO_URL_KEY = "photo_url"
-        const val PHOTO_URL_LOAD_TIME = "photo_time"
-        const val USER_TASKS_KEY = "user_tasks"
+        private const val PHOTO_URL_KEY = "photo_url"
+        private const val PHOTO_URL_LOAD_TIME = "photo_time"
+        private const val USER_TASKS_KEY = "user_tasks"
     }
 }

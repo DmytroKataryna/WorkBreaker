@@ -6,6 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kataryna.app.work.breaker.data.local.LocalLocationStorage
 import kataryna.app.work.breaker.data.local.LocalPhotoStorage
 import kataryna.app.work.breaker.data.mapper.UnsplashPhotoParser
 import kataryna.app.work.breaker.data.remote.UnsplashAPI
@@ -35,6 +36,14 @@ object AppModule {
         timeRetriever: TimeRetriever,
     ): LocalPhotoStorage {
         return LocalPhotoStorage(appContext, timeRetriever)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocationStorage(
+        @ApplicationContext appContext: Context
+    ): LocalLocationStorage {
+        return LocalLocationStorage(appContext)
     }
 
     @Provides
