@@ -1,12 +1,14 @@
 package kataryna.app.work.breaker.presentation.map
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kataryna.app.work.breaker.domain.GeoTrackingRepository
+import kataryna.app.work.breaker.utils.Resource
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -16,14 +18,23 @@ class MapViewModel @Inject constructor(
     private val repository: GeoTrackingRepository
 ) : ViewModel() {
 
-    var state = MutableLiveData<MapUiState>()
+    var state = MutableStateFlow(MapUiState())
 
     fun fetchGeoLocation() {
         viewModelScope.launch {
-            state.postValue(MapUiState.Loading)
             withContext(Dispatchers.Default) {
-                val loc = repository.getGeoLocation()
-                state.postValue(MapUiState.GeoLocation(loc))
+                repository.getGeoLocation()
+            }.collect {
+                val result = when (it) {
+                    is Resource.Error -> state.value.copy(exception = it.message, isLoading = false)
+                    is Resource.Loading -> state.value.copy(isLoading = true, exception = null)
+                    is Resource.Success -> state.value.copy(
+                        location = it.data,
+                        isLoading = false,
+                        exception = null
+                    )
+                }
+                state.emit(result)
             }
         }
     }
@@ -36,9 +47,17 @@ class MapViewModel @Inject constructor(
         }
     }
 
-    sealed class MapUiState {
-        data class GeoLocation(val location: LatLng) : MapUiState()
-        data class Error(val exception: String) : MapUiState()
-        object Loading : MapUiState()
+    fun clearUserPickedLocation() {
+        viewModelScope.launch {
+            withContext(Dispatchers.Default) {
+                repository.clearLocation()
+            }
+        }
     }
+
+    data class MapUiState(
+        val location: LatLng? = null,
+        val exception: String? = null,
+        val isLoading: Boolean = false
+    )
 }

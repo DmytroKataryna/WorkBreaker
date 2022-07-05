@@ -7,7 +7,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kataryna.app.work.breaker.data.local.LocalLocationStorage
+import kataryna.app.work.breaker.data.local.LocalLocationStorageImpl
 import kataryna.app.work.breaker.data.local.LocalPhotoStorage
+import kataryna.app.work.breaker.data.local.LocalPhotoStorageImpl
 import kataryna.app.work.breaker.data.mapper.UnsplashPhotoParser
 import kataryna.app.work.breaker.data.remote.UnsplashAPI
 import kataryna.app.work.breaker.data.sysTime.TimeRetriever
@@ -35,7 +37,7 @@ object AppModule {
         @ApplicationContext appContext: Context,
         timeRetriever: TimeRetriever,
     ): LocalPhotoStorage {
-        return LocalPhotoStorage(appContext, timeRetriever)
+        return LocalPhotoStorageImpl(appContext, timeRetriever)
     }
 
     @Provides
@@ -43,7 +45,7 @@ object AppModule {
     fun provideLocationStorage(
         @ApplicationContext appContext: Context
     ): LocalLocationStorage {
-        return LocalLocationStorage(appContext)
+        return LocalLocationStorageImpl(appContext)
     }
 
     @Provides

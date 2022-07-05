@@ -1,12 +1,13 @@
 package kataryna.app.work.breaker.presentation.tasks
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kataryna.app.work.breaker.domain.GeoTrackingRepository
 import kataryna.app.work.breaker.domain.UnsplashPhotoRepository
 import kataryna.app.work.breaker.utils.Resource
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -14,20 +15,29 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TasksViewModel @Inject constructor(
-    private val repository: UnsplashPhotoRepository
+    private val repository: UnsplashPhotoRepository,
+    private val geoTrackingRepository: GeoTrackingRepository
 ) : ViewModel() {
 
-    var state = MutableLiveData<TasksUiState>()
+    var state = MutableStateFlow(TasksUiState(isLoading = true))
 
     fun fetchBackgroundPhoto() {
         viewModelScope.launch {
             withContext(Dispatchers.Default) {
                 repository.getBackgroundPhoto().collect {
-                    when (it) {
-                        is Resource.Loading -> state.postValue(TasksUiState.Loading)
-                        is Resource.Error -> state.postValue(TasksUiState.Error(it.message.orEmpty()))
-                        is Resource.Success -> state.postValue(TasksUiState.ScreenBackground(it.data?.url.orEmpty()))
+                    val result = when (it) {
+                        is Resource.Loading -> state.value.copy(isLoading = true, exception = null)
+                        is Resource.Error -> state.value.copy(
+                            exception = it.message.orEmpty(),
+                            isLoading = false
+                        )
+                        is Resource.Success -> state.value.copy(
+                            bgImageUrl = it.data?.url.orEmpty(),
+                            isLoading = false,
+                            exception = null
+                        )
                     }
+                    state.emit(result)
                 }
             }
         }
@@ -45,16 +55,45 @@ class TasksViewModel @Inject constructor(
         viewModelScope.launch {
             withContext(Dispatchers.Default) {
                 repository.fetchUserTasks()
-            }.let {
-                state.postValue(TasksUiState.UserTasks(it.orEmpty()))
+            }.collect {
+                val result = when (it) {
+                    is Resource.Error -> state.value.copy(
+                        exception = it.message.orEmpty(),
+                        isLoading = false
+                    )
+                    is Resource.Loading -> state.value.copy(isLoading = true, exception = null)
+                    is Resource.Success -> state.value.copy(
+                        userTasks = it.data.orEmpty(),
+                        isLoading = false,
+                        exception = null
+                    )
+                }
+                state.emit(result)
             }
         }
     }
 
-    sealed class TasksUiState {
-        data class ScreenBackground(val bgImageUrl: String) : TasksUiState()
-        data class UserTasks(val userTasks: String) : TasksUiState()
-        data class Error(val exception: String) : TasksUiState()
-        object Loading : TasksUiState()
+    fun checkGeofencingStatus() {
+        viewModelScope.launch {
+            withContext(Dispatchers.Default) {
+                geoTrackingRepository.checkGeofencingStatus()
+            }.let {
+                state.emit(
+                    state.value.copy(
+                        geofencingStatus = it,
+                        isLoading = false,
+                        exception = null
+                    )
+                )
+            }
+        }
     }
+
+    data class TasksUiState(
+        val geofencingStatus: Boolean = false,
+        val userTasks: String = "",
+        val bgImageUrl: String? = null,
+        val exception: String? = null,
+        val isLoading: Boolean = false
+    )
 }

@@ -47,11 +47,12 @@ class UnsplashPhotoRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun saveUserTasks(text: String) {
-        local.saveUserTasks(text)
-    }
+    override suspend fun saveUserTasks(text: String) = local.saveUserTasks(text)
 
-    override suspend fun fetchUserTasks(): String? {
-        return local.getUserTasks()
+    override suspend fun fetchUserTasks(): Flow<Resource<String?>> {
+        return flow {
+            emit(Resource.Loading())
+            emit(Resource.Success(data = local.getUserTasks()))
+        }
     }
 }

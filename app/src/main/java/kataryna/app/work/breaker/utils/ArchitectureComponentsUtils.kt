@@ -7,8 +7,23 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
+import androidx.lifecycle.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+
+fun <T : Any> Fragment.observeFlow(
+    flow: Flow<T>,
+    function: (T) -> Unit
+) {
+    lifecycleScope.launch {
+        repeatOnLifecycle(Lifecycle.State.STARTED) {
+            flow.collect {
+                function.invoke(it)
+            }
+        }
+    }
+}
 
 fun <T : Any, L : LiveData<T>> AppCompatActivity.observe(liveData: L, body: (T?) -> Unit) {
     liveData.observe(this, Observer(body))
@@ -45,6 +60,10 @@ fun <T : Any, L : LiveData<T>> Fragment.observeOnceNonNull(liveData: L, action: 
     })
 }
 
-fun <T : ViewDataBinding> AppCompatActivity.getViewDataBinding(@LayoutRes layoutId: Int): T = DataBindingUtil.setContentView(this, layoutId)
+fun <T : ViewDataBinding> AppCompatActivity.getViewDataBinding(@LayoutRes layoutId: Int): T =
+    DataBindingUtil.setContentView(this, layoutId)
 
-fun <T : ViewDataBinding> Fragment.getViewDataBinding(container: ViewGroup?, @LayoutRes layoutId: Int): T = DataBindingUtil.inflate(layoutInflater, layoutId, container, false)
+fun <T : ViewDataBinding> Fragment.getViewDataBinding(
+    container: ViewGroup?,
+    @LayoutRes layoutId: Int
+): T = DataBindingUtil.inflate(layoutInflater, layoutId, container, false)

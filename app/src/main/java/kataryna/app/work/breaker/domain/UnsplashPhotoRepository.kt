@@ -10,6 +10,6 @@ interface UnsplashPhotoRepository {
 
     suspend fun saveUserTasks(text: String)
 
-    suspend fun fetchUserTasks(): String?
+    suspend fun fetchUserTasks(): Flow<Resource<String?>>
 
 }

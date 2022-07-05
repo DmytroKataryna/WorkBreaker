@@ -1,5 +1,6 @@
 package kataryna.app.work.breaker.data.remote
 
+import kataryna.app.work.breaker.BuildConfig
 import kataryna.app.work.breaker.data.remote.dto.UnsplashRemotePhoto
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -14,10 +15,8 @@ interface UnsplashAPI {
         @Query("topics") topics: String = TOPIC_ID
     ): UnsplashRemotePhoto
 
-    //TODO hide keys
     companion object {
-        const val API_KEY = "Y9wpetECD7luCQFARXc7rPvTa8AL4gFjUG79161G31w"
-        const val SECRET_KEY = "FXIJAEDqI_aH5jMAufpONE0prYyBvArxw-jG0wlnqPU"
+        const val API_KEY = BuildConfig.UNSPLASH_API_KEY
         const val BASE_URL = "https://api.unsplash.com/"
         const val TOPIC_ID = "iUIsnVtjB0Y"
     }
