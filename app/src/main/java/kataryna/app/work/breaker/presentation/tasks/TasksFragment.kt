@@ -33,7 +33,7 @@ class TasksFragment : Fragment(R.layout.fragment_tasks) {
             it.bgImageUrl?.let { bgImageUrl ->
                 loadBgImage(binding.backgroundImage, bgImageUrl)
             }
-            if (!it.userTasks.isNullOrEmpty()) {
+            if (it.userTasks.isNotEmpty()) {
                 updateUserTasksText(it.userTasks)
             }
             updateGeoFeatureSwitch(it.geofencingStatus)

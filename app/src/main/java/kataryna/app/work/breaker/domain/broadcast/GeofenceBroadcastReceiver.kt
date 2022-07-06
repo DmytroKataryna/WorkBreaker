@@ -59,7 +59,7 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
         OneTimeWorkRequestBuilder<NotificationSoundWork>()
             .setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST)
             .setInputData(workDataOf(NotificationSoundWork.ACTION_KEY to NotificationSoundWork.ACTION_NEW_NOTIFICATION))
-            .addTag(exitZoneTag)
+            .addTag(EXIT_ZONE_TAG)
             .build()
             .let { mng.enqueue(it) }
     }
@@ -68,13 +68,13 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
         PeriodicWorkRequestBuilder<NotificationSoundWork>(INTERVAL_IN_MIN, TimeUnit.MINUTES)
             .setInputData(workDataOf(NotificationSoundWork.ACTION_KEY to NotificationSoundWork.ACTION_TIME_FOR_BREAK))
             .setInitialDelay(INTERVAL_IN_MIN, TimeUnit.MINUTES)
-            .addTag(workTag)
+            .addTag(WORK_TAG)
             .build()
             .let { mng.enqueue(it) }
     }
 
     private fun cancelWorkBreakerAlarm(mng: WorkManager) {
-        mng.cancelAllWorkByTag(workTag)
+        mng.cancelAllWorkByTag(WORK_TAG)
     }
 
     private fun sendNotification(
@@ -95,7 +95,7 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
             .setContentIntent(createPendingIntent(context))
 
         with(NotificationManagerCompat.from(context)) {
-            notify(notificationId, builder.build())
+            notify(NOTIFICATION_ID, builder.build())
         }
     }
 
@@ -105,10 +105,9 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
         .createPendingIntent()
 
     companion object {
-        private const val notificationId = 22231
-        private const val workTag = "notification_sound_work"
-        private const val exitZoneTag = "exit_zone_work"
-
+        private const val NOTIFICATION_ID = 22231
+        private const val WORK_TAG = "notification_sound_work"
+        private const val EXIT_ZONE_TAG = "exit_zone_work"
         private const val INTERVAL_IN_MIN = 45L
     }
 }

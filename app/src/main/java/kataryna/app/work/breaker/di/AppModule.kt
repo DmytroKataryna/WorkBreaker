@@ -14,6 +14,8 @@ import kataryna.app.work.breaker.data.mapper.UnsplashPhotoParser
 import kataryna.app.work.breaker.data.remote.UnsplashAPI
 import kataryna.app.work.breaker.data.sysTime.TimeRetriever
 import kataryna.app.work.breaker.data.sysTime.TimeRetrieverImpl
+import kataryna.app.work.breaker.domain.AppDispatcherImpl
+import kataryna.app.work.breaker.domain.AppDispatchers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -24,6 +26,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideDispatchers(): AppDispatchers {
+        return AppDispatcherImpl()
+    }
 
     @Provides
     @Singleton
