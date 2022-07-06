@@ -1,3 +1,24 @@
-<resources>
-    <string name="app_name">WorkManager</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="app_name">WorkBreaker</string>
+
+    <string name="dialog_permission_title">Background location tracking is necessary functionality for this application. Without it geofencing would not work. Please update permission in settings for proper use.</string>
+    <string name="dialog_permission_pos_btn">Location settings</string>
+    <string name="dialog_permission_neg_btn">Return</string>
+    <string name="dialog_error_location_msg">Ups, failed to retrieve user geo location</string>
+    <string name="dialog_error_geo_add_msg">Ups, failed to add geofencing point. Please try again</string>
+
+    <string name="tasks_hint_text">Enter your task to be informed.</string>
+    <string name="map_header_text">Please select location where you want to receive notification \n*Click on marker to remove</string>
+
+    <string name="channel_id">work_breaker_channel_id</string>
+    <string name="channel_name">work_breaker_channel</string>
+    <string name="channel_description">Notification channel for displaying geofencing events</string>
+
+    <string name="notification_enter_title" tools:ignore="Typos">It\'s me again ✿✿✿</string>
+    <string name="notification_enter_txt" tools:ignore="Typos">you are in zone, launching work tracker (•◡•)</string>
+    <string name="notification_leave_title" tools:ignore="Typos">Oh, don\'t wanna bother you, but…</string>
+    <string name="notification_leave_text" tools:ignore="Typos">you left your zone, check tasks pls ♡♡♡</string>
+    <string name="notification_sound_title">Hey buddy, check sound info please</string>
+
 </resources>
