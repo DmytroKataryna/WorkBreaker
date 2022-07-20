@@ -1,30 +1,32 @@
 package kataryna.app.work.breaker.data.local
 
-import android.content.Context
+import androidx.annotation.VisibleForTesting
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.doublePreferencesKey
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.preferencesDataStore
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.coroutines.flow.first
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "location")
+class LocalLocationStorageImpl(
+    private val dataStore: DataStore<Preferences>
+) : LocalLocationStorage {
 
-class LocalLocationStorageImpl(private val context: Context) : LocalLocationStorage {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val latitudeKey = doublePreferencesKey(LAT_KEY)
 
-    private val latitudeKey = doublePreferencesKey(LAT_KEY)
-    private val longitudeKey = doublePreferencesKey(LONG_KEY)
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val longitudeKey = doublePreferencesKey(LONG_KEY)
 
     override suspend fun saveLocation(loc: LatLng) {
-        context.dataStore.edit { locationStorage ->
+        dataStore.edit { locationStorage ->
             locationStorage[latitudeKey] = loc.latitude
             locationStorage[longitudeKey] = loc.longitude
         }
     }
 
     override suspend fun getGeoLocation(): LatLng? {
-        with(context.dataStore.data.first()) {
+        with(dataStore.data.first()) {
             val lat = this[latitudeKey] ?: INVALID
             val long = this[longitudeKey] ?: INVALID
             return if (lat == INVALID && long == INVALID) {
@@ -36,7 +38,7 @@ class LocalLocationStorageImpl(private val context: Context) : LocalLocationStor
     }
 
     override suspend fun clearLocation() {
-        context.dataStore.edit { locationStorage ->
+        dataStore.edit { locationStorage ->
             locationStorage[latitudeKey] = INVALID
             locationStorage[longitudeKey] = INVALID
         }
@@ -48,10 +50,11 @@ class LocalLocationStorageImpl(private val context: Context) : LocalLocationStor
     }
 
     companion object {
+        @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+        const val INVALID = -1.0
+
         private const val LAT_KEY = "latitude_key"
         private const val LONG_KEY = "longitude_key"
-        private const val INVALID = -1.0
-
-
     }
+
 }

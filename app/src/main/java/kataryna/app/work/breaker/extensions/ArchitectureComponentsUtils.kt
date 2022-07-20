@@ -1,5 +1,5 @@
 @file:JvmName("ArchitectureComponentsUtils")
-package kataryna.app.work.breaker.utils
+package kataryna.app.work.breaker.extensions
 
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -9,7 +9,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 fun <T : Any> Fragment.observeFlow(

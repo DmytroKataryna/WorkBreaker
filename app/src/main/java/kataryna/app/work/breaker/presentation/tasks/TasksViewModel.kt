@@ -3,10 +3,10 @@ package kataryna.app.work.breaker.presentation.tasks
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kataryna.app.work.breaker.domain.AppDispatchers
-import kataryna.app.work.breaker.domain.GeoTrackingRepository
-import kataryna.app.work.breaker.domain.UnsplashPhotoRepository
-import kataryna.app.work.breaker.utils.Resource
+import kataryna.app.work.breaker.domain.dispatchers.AppDispatchers
+import kataryna.app.work.breaker.domain.repo.GeoTrackingRepository
+import kataryna.app.work.breaker.domain.repo.UnsplashPhotoRepository
+import kataryna.app.work.breaker.domain.Resource
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject

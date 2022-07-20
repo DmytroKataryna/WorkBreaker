@@ -6,8 +6,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kataryna.app.work.breaker.data.repository.GeoTrackingRepositoryImpl
 import kataryna.app.work.breaker.data.repository.UnsplashPhotoRepositoryImpl
-import kataryna.app.work.breaker.domain.GeoTrackingRepository
-import kataryna.app.work.breaker.domain.UnsplashPhotoRepository
+import kataryna.app.work.breaker.domain.repo.GeoTrackingRepository
+import kataryna.app.work.breaker.domain.repo.UnsplashPhotoRepository
 import javax.inject.Singleton
 
 @Module

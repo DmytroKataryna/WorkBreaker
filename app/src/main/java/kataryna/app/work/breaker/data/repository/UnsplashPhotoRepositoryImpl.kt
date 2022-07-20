@@ -3,9 +3,9 @@ package kataryna.app.work.breaker.data.repository
 import kataryna.app.work.breaker.data.local.LocalPhotoStorage
 import kataryna.app.work.breaker.data.mapper.UnsplashPhotoParser
 import kataryna.app.work.breaker.data.remote.UnsplashAPI
-import kataryna.app.work.breaker.domain.UnsplashPhotoRepository
+import kataryna.app.work.breaker.domain.repo.UnsplashPhotoRepository
 import kataryna.app.work.breaker.domain.model.UnsplashPhoto
-import kataryna.app.work.breaker.utils.Resource
+import kataryna.app.work.breaker.domain.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
@@ -24,7 +24,7 @@ class UnsplashPhotoRepositoryImpl @Inject constructor(
     override suspend fun getBackgroundPhoto(): Flow<Resource<UnsplashPhoto>> {
         return flow {
             emit(Resource.Loading())
-            if (local.photoUrlValid()) {
+            if (local.isPhotoUrlValid()) {
                 emit(Resource.Success(data = UnsplashPhoto(local.loadPhotoUrl().orEmpty())))
             } else {
                 val result = loadFromRemote()
@@ -36,7 +36,8 @@ class UnsplashPhotoRepositoryImpl @Inject constructor(
     private suspend fun loadFromRemote(): Resource<UnsplashPhoto> {
         return try {
             val data = api.getRandomPhoto()
-            val result = parser.convert(data).also { local.savePhotoUrl(it.url) }
+            val result = parser.convert(data)
+            local.savePhotoUrl(result.url)
             Resource.Success(data = result)
         } catch (e: IOException) {
             Timber.e(e)

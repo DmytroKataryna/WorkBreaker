@@ -1,4 +1,4 @@
-package kataryna.app.work.breaker.domain
+package kataryna.app.work.breaker.domain.dispatchers
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

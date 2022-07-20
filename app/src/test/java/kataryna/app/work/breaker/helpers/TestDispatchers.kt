@@ -1,6 +1,6 @@
-package kataryna.app.work.breaker
+package kataryna.app.work.breaker.helpers
 
-import kataryna.app.work.breaker.domain.AppDispatchers
+import kataryna.app.work.breaker.domain.dispatchers.AppDispatchers
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -14,5 +14,5 @@ class TestDispatchers : AppDispatchers {
     override val io: CoroutineDispatcher
         get() = UnconfinedTestDispatcher()
     override val default: CoroutineDispatcher
-        get() = StandardTestDispatcher()
+        get() = UnconfinedTestDispatcher()
 }

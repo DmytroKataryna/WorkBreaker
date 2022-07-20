@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kataryna.app.work.breaker.R
 import kataryna.app.work.breaker.data.local.LocalLocationStorage
 import kataryna.app.work.breaker.presentation.sound.NotificationSoundWork
-import kataryna.app.work.breaker.utils.orZero
+import kataryna.app.work.breaker.extensions.orZero
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject

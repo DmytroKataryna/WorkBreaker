@@ -1,4 +1,4 @@
-package kataryna.app.work.breaker.utils
+package kataryna.app.work.breaker.extensions
 
 fun Double?.orZero(): Double {
     return this ?: 0.0

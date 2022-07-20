@@ -14,8 +14,8 @@ import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kataryna.app.work.breaker.R
 import kataryna.app.work.breaker.databinding.FragmentTasksBinding
-import kataryna.app.work.breaker.utils.getViewDataBinding
-import kataryna.app.work.breaker.utils.observeFlow
+import kataryna.app.work.breaker.extensions.getViewDataBinding
+import kataryna.app.work.breaker.extensions.observeFlow
 
 @AndroidEntryPoint
 class TasksFragment : Fragment(R.layout.fragment_tasks) {

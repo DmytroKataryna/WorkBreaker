@@ -32,8 +32,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kataryna.app.work.breaker.R
 import kataryna.app.work.breaker.databinding.FragmentMapBinding
 import kataryna.app.work.breaker.domain.broadcast.GeofenceBroadcastReceiver
-import kataryna.app.work.breaker.utils.getViewDataBinding
-import kataryna.app.work.breaker.utils.observeFlow
+import kataryna.app.work.breaker.extensions.getViewDataBinding
+import kataryna.app.work.breaker.extensions.observeFlow
 import timber.log.Timber
 
 
