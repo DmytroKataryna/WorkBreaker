@@ -56,5 +56,4 @@ class LocalLocationStorageImpl(
         private const val LAT_KEY = "latitude_key"
         private const val LONG_KEY = "longitude_key"
     }
-
 }

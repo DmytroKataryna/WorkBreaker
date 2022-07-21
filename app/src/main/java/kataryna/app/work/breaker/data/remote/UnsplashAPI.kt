@@ -20,5 +20,4 @@ interface UnsplashAPI {
         const val BASE_URL = "https://api.unsplash.com/"
         const val TOPIC_ID = "iUIsnVtjB0Y"
     }
-
 }

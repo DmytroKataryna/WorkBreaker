@@ -6,8 +6,8 @@ import kataryna.app.work.breaker.data.mapper.UnsplashPhotoParser
 import kataryna.app.work.breaker.data.remote.UnsplashAPI
 import kataryna.app.work.breaker.data.remote.dto.UnsplashRemotePhoto
 import kataryna.app.work.breaker.data.remote.dto.Urls
-import kataryna.app.work.breaker.domain.model.UnsplashPhoto
 import kataryna.app.work.breaker.domain.Resource
+import kataryna.app.work.breaker.domain.model.UnsplashPhoto
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
@@ -54,21 +54,23 @@ class UnsplashPhotoRepositoryImplTest {
                 onBlocking { savePhotoUrl(any()) } doReturn Unit
             }
             val remote: UnsplashAPI = mock {
-                onBlocking { getRandomPhoto(any(), any()) } doReturn (UnsplashRemotePhoto(
-                    color = "Color",
-                    alt_description = "Alt description",
-                    created_at = "Created at",
-                    description = "Description",
-                    downloads = 33,
-                    height = 55,
-                    id = "ID",
-                    likes = 111,
-                    promoted_at = "Promoted at",
-                    updated_at = "Updated at",
-                    views = 4,
-                    width = 5,
-                    urls = Urls(regular = "photo url")
-                ))
+                onBlocking { getRandomPhoto(any(), any()) } doReturn (
+                        UnsplashRemotePhoto(
+                            color = "Color",
+                            alt_description = "Alt description",
+                            created_at = "Created at",
+                            description = "Description",
+                            downloads = 33,
+                            height = 55,
+                            id = "ID",
+                            likes = 111,
+                            promoted_at = "Promoted at",
+                            updated_at = "Updated at",
+                            views = 4,
+                            width = 5,
+                            urls = Urls(regular = "photo url")
+                        )
+                        )
             }
             val parser: UnsplashPhotoParser = mock {
                 onBlocking { convert(any()) } doReturn (UnsplashPhoto("photo_url"))

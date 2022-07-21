@@ -36,7 +36,6 @@ import kataryna.app.work.breaker.extensions.getViewDataBinding
 import kataryna.app.work.breaker.extensions.observeFlow
 import timber.log.Timber
 
-
 @AndroidEntryPoint
 class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
 
@@ -68,7 +67,8 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ) = getViewDataBinding<FragmentMapBinding>(container, R.layout.fragment_map).apply {
         binding = this@apply
@@ -200,6 +200,7 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         )
     }
 
+    @Suppress("SameParameterValue")
     private fun hasPermission(context: Context, permission: String) =
         checkSelfPermission(context, permission) == PackageManager.PERMISSION_GRANTED
 
@@ -207,10 +208,12 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         this.getOrDefault(accessFineLocation, false)
 
     private fun Context.openAppSystemSettings() {
-        startActivity(Intent().apply {
-            action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-            data = Uri.fromParts("package", packageName, null)
-        })
+        startActivity(
+            Intent().apply {
+                action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                data = Uri.fromParts("package", packageName, null)
+            }
+        )
     }
 
     companion object {
@@ -219,4 +222,3 @@ class MapFragment : Fragment(R.layout.fragment_map), OnMapReadyCallback {
         private const val ZOOM_LEVEL = 18f
     }
 }
-

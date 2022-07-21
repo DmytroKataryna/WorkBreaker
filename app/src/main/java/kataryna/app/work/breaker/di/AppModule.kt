@@ -28,10 +28,9 @@ object AppModule {
             .baseUrl(UnsplashAPI.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .client(
-                OkHttpClient.Builder()
-                    .addInterceptor(HttpLoggingInterceptor().apply {
-                        level = HttpLoggingInterceptor.Level.BASIC
-                    }).build()
+                OkHttpClient.Builder().addInterceptor(
+                    HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
+                ).build()
             ).build()
             .create()
     }

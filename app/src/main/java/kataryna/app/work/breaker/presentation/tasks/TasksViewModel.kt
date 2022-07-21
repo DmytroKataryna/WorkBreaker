@@ -3,10 +3,10 @@ package kataryna.app.work.breaker.presentation.tasks
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kataryna.app.work.breaker.domain.Resource
 import kataryna.app.work.breaker.domain.dispatchers.AppDispatchers
 import kataryna.app.work.breaker.domain.repo.GeoTrackingRepository
 import kataryna.app.work.breaker.domain.repo.UnsplashPhotoRepository
-import kataryna.app.work.breaker.domain.Resource
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,19 +23,20 @@ class TasksViewModel @Inject constructor(
     fun fetchBackgroundPhoto() {
         viewModelScope.launch(dispatchers.default) {
             repository.getBackgroundPhoto().collect {
-                val result = when (it) {
-                    is Resource.Loading -> state.value.copy(isLoading = true, exception = null)
-                    is Resource.Error -> state.value.copy(
-                        exception = it.message.orEmpty(),
-                        isLoading = false
-                    )
-                    is Resource.Success -> state.value.copy(
-                        bgImageUrl = it.data?.url.orEmpty(),
-                        isLoading = false,
-                        exception = null
-                    )
-                }
-                state.emit(result)
+                state.emit(
+                    when (it) {
+                        is Resource.Loading -> state.value.copy(isLoading = true, exception = null)
+                        is Resource.Error -> state.value.copy(
+                            exception = it.message.orEmpty(),
+                            isLoading = false
+                        )
+                        is Resource.Success -> state.value.copy(
+                            bgImageUrl = it.data?.url.orEmpty(),
+                            isLoading = false,
+                            exception = null
+                        )
+                    }
+                )
             }
         }
     }
@@ -49,19 +50,20 @@ class TasksViewModel @Inject constructor(
     fun fetchUserTasks() {
         viewModelScope.launch(dispatchers.default) {
             repository.fetchUserTasks().collect {
-                val result = when (it) {
-                    is Resource.Error -> state.value.copy(
-                        exception = it.message.orEmpty(),
-                        isLoading = false
-                    )
-                    is Resource.Loading -> state.value.copy(isLoading = true, exception = null)
-                    is Resource.Success -> state.value.copy(
-                        userTasks = it.data.orEmpty(),
-                        isLoading = false,
-                        exception = null
-                    )
-                }
-                state.emit(result)
+                state.emit(
+                    when (it) {
+                        is Resource.Error -> state.value.copy(
+                            exception = it.message.orEmpty(),
+                            isLoading = false
+                        )
+                        is Resource.Loading -> state.value.copy(isLoading = true, exception = null)
+                        is Resource.Success -> state.value.copy(
+                            userTasks = it.data.orEmpty(),
+                            isLoading = false,
+                            exception = null
+                        )
+                    }
+                )
             }
         }
     }

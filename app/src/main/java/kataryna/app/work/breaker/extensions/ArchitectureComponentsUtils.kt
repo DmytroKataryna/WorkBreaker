@@ -33,30 +33,39 @@ fun <T : Any, L : LiveData<T>> Fragment.observe(liveData: L, body: (T?) -> Unit)
 }
 
 fun <T : Any, L : LiveData<T>> AppCompatActivity.observeNonNull(liveData: L, body: (T) -> Unit) {
-    liveData.observe(this, Observer { item ->
-        if (item != null) {
-            body.invoke(item)
+    liveData.observe(
+        this,
+        Observer { item ->
+            if (item != null) {
+                body.invoke(item)
+            }
         }
-    })
+    )
 }
 
 fun <T : Any, L : LiveData<T>> Fragment.observeNonNull(liveData: L, body: (T) -> Unit) {
-    liveData.observe(viewLifecycleOwner, Observer { item ->
-        if (item != null) {
-            body.invoke(item)
+    liveData.observe(
+        viewLifecycleOwner,
+        Observer { item ->
+            if (item != null) {
+                body.invoke(item)
+            }
         }
-    })
+    )
 }
 
 fun <T : Any, L : LiveData<T>> Fragment.observeOnceNonNull(liveData: L, action: (T) -> Unit) {
-    liveData.observe(viewLifecycleOwner, object : Observer<T> {
-        override fun onChanged(t: T?) {
-            if (t != null) {
-                action.invoke(t)
-                liveData.removeObserver(this)
+    liveData.observe(
+        viewLifecycleOwner,
+        object : Observer<T> {
+            override fun onChanged(t: T?) {
+                if (t != null) {
+                    action.invoke(t)
+                    liveData.removeObserver(this)
+                }
             }
         }
-    })
+    )
 }
 
 fun <T : ViewDataBinding> AppCompatActivity.getViewDataBinding(@LayoutRes layoutId: Int): T =

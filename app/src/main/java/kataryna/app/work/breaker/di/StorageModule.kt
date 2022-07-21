@@ -23,7 +23,7 @@ object StorageModule {
     @Singleton
     fun provideLocalPhotoStorage(
         @ApplicationContext appContext: Context,
-        timeRetriever: TimeRetriever,
+        timeRetriever: TimeRetriever
     ): LocalPhotoStorage {
         val settingsDataStore = PreferenceDataStoreFactory.create {
             appContext.preferencesDataStoreFile("settings")

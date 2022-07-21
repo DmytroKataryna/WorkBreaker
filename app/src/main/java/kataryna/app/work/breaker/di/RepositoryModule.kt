@@ -20,7 +20,6 @@ abstract class RepositoryModule {
         repositoryImpl: UnsplashPhotoRepositoryImpl
     ): UnsplashPhotoRepository
 
-
     @Binds
     @Singleton
     abstract fun bindGeoRepository(

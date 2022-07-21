@@ -48,7 +48,7 @@ class NotificationSoundWork(
                     Timber.d("Play has been completed")
                     continuation.resume(true)
                 }
-                setOnErrorListener { z, _, _ ->
+                setOnErrorListener { _, _, _ ->
                     Timber.d("Error on playing sound.")
                     continuation.resume(false)
                     true

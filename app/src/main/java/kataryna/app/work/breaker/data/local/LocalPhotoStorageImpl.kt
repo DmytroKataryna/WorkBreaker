@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import java.util.concurrent.TimeUnit
 
-
 class LocalPhotoStorageImpl(
     private val dataStore: DataStore<Preferences>,
     private val systemTimeRetriever: TimeRetriever
@@ -37,7 +36,7 @@ class LocalPhotoStorageImpl(
             val diff = currentTime - photoTime
 
             val minutes = TimeUnit.MILLISECONDS.toMinutes(diff)
-            //in case photo was loaded 2min ago, no need to do it again
+            // in case photo was loaded 2min ago, no need to do it again
             return@map minutes <= PHOTO_TIME_EXPIRE_MIN
         }.first()
     }

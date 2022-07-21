@@ -12,5 +12,5 @@ interface GeoTrackingRepository {
 
     suspend fun clearLocation()
 
-    suspend fun checkGeofencingStatus() : Boolean
+    suspend fun checkGeofencingStatus(): Boolean
 }
