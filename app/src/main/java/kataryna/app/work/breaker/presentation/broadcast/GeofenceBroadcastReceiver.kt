@@ -1,4 +1,4 @@
-package kataryna.app.work.breaker.domain.broadcast
+package kataryna.app.work.breaker.presentation.broadcast
 
 import android.app.Notification
 import android.content.BroadcastReceiver
@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kataryna.app.work.breaker.R
 import kataryna.app.work.breaker.data.local.LocalLocationStorage
 import kataryna.app.work.breaker.extensions.orZero
-import kataryna.app.work.breaker.presentation.sound.NotificationSoundWork
+import kataryna.app.work.breaker.presentation.features.sound.NotificationSoundWork
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject

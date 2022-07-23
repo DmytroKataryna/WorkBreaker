@@ -1,7 +1,7 @@
-package kataryna.app.work.breaker.domain.repo
+package kataryna.app.work.breaker.data.repository
 
 import com.google.android.gms.maps.model.LatLng
-import kataryna.app.work.breaker.domain.Resource
+import kataryna.app.work.breaker.data.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface GeoTrackingRepository {

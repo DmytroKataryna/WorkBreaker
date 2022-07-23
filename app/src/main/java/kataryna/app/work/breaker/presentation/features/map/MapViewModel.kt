@@ -1,12 +1,12 @@
-package kataryna.app.work.breaker.presentation.map
+package kataryna.app.work.breaker.presentation.features.map
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.maps.model.LatLng
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kataryna.app.work.breaker.domain.Resource
-import kataryna.app.work.breaker.domain.dispatchers.AppDispatchers
-import kataryna.app.work.breaker.domain.repo.GeoTrackingRepository
+import kataryna.app.work.breaker.data.Resource
+import kataryna.app.work.breaker.dispatchers.AppDispatchers
+import kataryna.app.work.breaker.data.repository.GeoTrackingRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject

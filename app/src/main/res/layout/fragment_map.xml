@@ -48,7 +48,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/instruction_text"
-            tools:context=".presentation.map.MapFragment" />
+            tools:context="kataryna.app.work.breaker.presentation.features.map.MapFragment" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

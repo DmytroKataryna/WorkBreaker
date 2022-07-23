@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/tasksFragment"
-        android:name="kataryna.app.work.breaker.presentation.tasks.TasksFragment"
+        android:name="kataryna.app.work.breaker.presentation.features.tasks.TasksFragment"
         android:label="fragment_tasks"
         tools:layout="@layout/fragment_tasks" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
-        android:name="kataryna.app.work.breaker.presentation.map.MapFragment"
+        android:name="kataryna.app.work.breaker.presentation.features.map.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
 </navigation>

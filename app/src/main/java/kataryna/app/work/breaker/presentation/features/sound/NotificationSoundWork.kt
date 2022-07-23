@@ -1,4 +1,4 @@
-package kataryna.app.work.breaker.presentation.sound
+package kataryna.app.work.breaker.presentation.features.sound
 
 import android.app.Notification
 import android.content.Context

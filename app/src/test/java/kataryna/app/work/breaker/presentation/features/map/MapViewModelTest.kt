@@ -1,12 +1,12 @@
-package kataryna.app.work.breaker.presentation.map
+package kataryna.app.work.breaker.presentation.features.map
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.android.gms.maps.model.LatLng
 import kataryna.app.work.breaker.helpers.FakeGeoTrackingRepository
 import kataryna.app.work.breaker.helpers.TestDispatchers
-import kataryna.app.work.breaker.domain.dispatchers.AppDispatchers
-import kataryna.app.work.breaker.domain.repo.GeoTrackingRepository
-import kataryna.app.work.breaker.domain.Resource
+import kataryna.app.work.breaker.dispatchers.AppDispatchers
+import kataryna.app.work.breaker.data.repository.GeoTrackingRepository
+import kataryna.app.work.breaker.data.Resource
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking

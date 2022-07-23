@@ -2,8 +2,7 @@ package kataryna.app.work.breaker.data.repository
 
 import com.google.android.gms.maps.model.LatLng
 import kataryna.app.work.breaker.data.local.LocalLocationStorage
-import kataryna.app.work.breaker.domain.Resource
-import kataryna.app.work.breaker.domain.repo.GeoTrackingRepository
+import kataryna.app.work.breaker.data.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

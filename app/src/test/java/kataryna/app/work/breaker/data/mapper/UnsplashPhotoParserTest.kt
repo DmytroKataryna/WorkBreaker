@@ -1,8 +1,8 @@
 package kataryna.app.work.breaker.data.mapper
 
-import junit.framework.Assert.assertEquals
 import kataryna.app.work.breaker.data.remote.dto.UnsplashRemotePhoto
 import kataryna.app.work.breaker.data.remote.dto.Urls
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner

@@ -1,4 +1,4 @@
-package kataryna.app.work.breaker.presentation.tasks
+package kataryna.app.work.breaker.presentation.features.tasks
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -3,9 +3,8 @@ package kataryna.app.work.breaker.data.repository
 import kataryna.app.work.breaker.data.local.LocalPhotoStorage
 import kataryna.app.work.breaker.data.mapper.UnsplashPhotoParser
 import kataryna.app.work.breaker.data.remote.UnsplashAPI
-import kataryna.app.work.breaker.domain.Resource
-import kataryna.app.work.breaker.domain.model.UnsplashPhoto
-import kataryna.app.work.breaker.domain.repo.UnsplashPhotoRepository
+import kataryna.app.work.breaker.data.Resource
+import kataryna.app.work.breaker.presentation.model.UnsplashPhoto
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException

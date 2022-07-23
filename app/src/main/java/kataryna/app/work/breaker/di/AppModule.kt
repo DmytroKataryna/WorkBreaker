@@ -8,8 +8,8 @@ import kataryna.app.work.breaker.data.mapper.UnsplashPhotoParser
 import kataryna.app.work.breaker.data.remote.UnsplashAPI
 import kataryna.app.work.breaker.data.sysTime.TimeRetriever
 import kataryna.app.work.breaker.data.sysTime.TimeRetrieverImpl
-import kataryna.app.work.breaker.domain.dispatchers.AppDispatcherImpl
-import kataryna.app.work.breaker.domain.dispatchers.AppDispatchers
+import kataryna.app.work.breaker.dispatchers.AppDispatcherImpl
+import kataryna.app.work.breaker.dispatchers.AppDispatchers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

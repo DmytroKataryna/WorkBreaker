@@ -1,4 +1,4 @@
-package kataryna.app.work.breaker.domain
+package kataryna.app.work.breaker.data
 
 sealed class Resource<T>(val data: T? = null, val message: String? = null) {
     class Success<T>(data: T) : Resource<T>(data)

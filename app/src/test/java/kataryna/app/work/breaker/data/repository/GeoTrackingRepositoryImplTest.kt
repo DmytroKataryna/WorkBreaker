@@ -3,7 +3,7 @@ package kataryna.app.work.breaker.data.repository
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.android.gms.maps.model.LatLng
 import kataryna.app.work.breaker.data.local.LocalLocationStorage
-import kataryna.app.work.breaker.domain.Resource
+import kataryna.app.work.breaker.data.Resource
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking

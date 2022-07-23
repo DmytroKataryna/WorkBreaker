@@ -1,6 +1,6 @@
 package kataryna.app.work.breaker.helpers
 
-import kataryna.app.work.breaker.domain.dispatchers.AppDispatchers
+import kataryna.app.work.breaker.dispatchers.AppDispatchers
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher

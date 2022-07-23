@@ -1,8 +1,8 @@
 package kataryna.app.work.breaker.helpers
 
-import kataryna.app.work.breaker.domain.Resource
-import kataryna.app.work.breaker.domain.model.UnsplashPhoto
-import kataryna.app.work.breaker.domain.repo.UnsplashPhotoRepository
+import kataryna.app.work.breaker.data.Resource
+import kataryna.app.work.breaker.presentation.model.UnsplashPhoto
+import kataryna.app.work.breaker.data.repository.UnsplashPhotoRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

@@ -1,18 +1,18 @@
-package kataryna.app.work.breaker.presentation.tasks
+package kataryna.app.work.breaker.presentation.features.tasks
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
-import junit.framework.Assert.assertEquals
 import kataryna.app.work.breaker.helpers.FakeGeoTrackingRepository
 import kataryna.app.work.breaker.helpers.FakeUnsplashPhotoRepository
 import kataryna.app.work.breaker.helpers.TestDispatchers
-import kataryna.app.work.breaker.domain.dispatchers.AppDispatchers
-import kataryna.app.work.breaker.domain.repo.GeoTrackingRepository
-import kataryna.app.work.breaker.domain.repo.UnsplashPhotoRepository
-import kataryna.app.work.breaker.domain.model.UnsplashPhoto
-import kataryna.app.work.breaker.domain.Resource
+import kataryna.app.work.breaker.dispatchers.AppDispatchers
+import kataryna.app.work.breaker.data.repository.GeoTrackingRepository
+import kataryna.app.work.breaker.data.repository.UnsplashPhotoRepository
+import kataryna.app.work.breaker.presentation.model.UnsplashPhoto
+import kataryna.app.work.breaker.data.Resource
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

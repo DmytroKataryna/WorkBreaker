@@ -1,4 +1,4 @@
-package kataryna.app.work.breaker.presentation.map
+package kataryna.app.work.breaker.presentation.features.map
 
 import android.Manifest
 import android.app.PendingIntent
@@ -31,7 +31,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kataryna.app.work.breaker.R
 import kataryna.app.work.breaker.databinding.FragmentMapBinding
-import kataryna.app.work.breaker.domain.broadcast.GeofenceBroadcastReceiver
+import kataryna.app.work.breaker.presentation.broadcast.GeofenceBroadcastReceiver
 import kataryna.app.work.breaker.extensions.getViewDataBinding
 import kataryna.app.work.breaker.extensions.observeFlow
 import timber.log.Timber
